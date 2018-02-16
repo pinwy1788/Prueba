@@ -1,0 +1,72 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/polymerfire/firebase-auth.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+
+<dom-module id="login-firebase-app">
+  <template>
+      <style>
+        :host {
+          display: block;
+        }
+      </style>
+    <!-- ELEMENTOS:   -->
+      <!-- <h2>
+        HOLANDA [[user.email]]
+      </h2> -->
+      <!-- <h2> hola fuck</h2> -->
+      <firebase-auth 
+          id="auth" 
+          user="{{user}}" 
+          provider="google" 
+          on-error="handleError">
+      </firebase-auth>
+
+      <paper-icon-button 
+          icon="icons-app:account-circle" 
+          id="btn_login" 
+          on-tap="login"
+          hidden$=[[user]]>
+      </paper-icon-button>
+
+      <paper-icon-button 
+          icon="icons-app:close" 
+          id="btn_logout" 
+          on-tap="logout"
+          hidden$=[[!user]]>
+      </paper-icon-button>
+      <!-- <paper-button raised 
+          on-tap="login">
+          Iniciar Sesion
+      </paper-button>
+
+      <paper-button raised 
+          on-tap="logout">
+          Cerrar Sesion
+      </paper-button>  -->
+  </template>
+
+  <script>
+    class LoginFirebaseApp extends Polymer.Element {
+      static get is() { return 'login-firebase-app'; }
+      static get properties() {
+          return {
+              user: {type: Object},
+              login: {type: function(){}},
+              logout: {type: function(){}}
+          }
+      };
+    // INICIO --> de las Funciones de las Properties 
+      login() { this.$.auth.signInWithPopup()
+                .then(function(response) {console.log("logueado sin problemas")})
+                .catch(function(error) {console.log("error al loguearse")})
+              }
+      logout() { this.$.auth.signOut()
+                  console.log("se ha cerrado la sesion sin problemas")
+               }
+    // FIN --> de las Funciones de las Properties 
+      
+    }
+    window.customElements.define(LoginFirebaseApp.is, LoginFirebaseApp);
+  </script>
+</dom-module>

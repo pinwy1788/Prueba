@@ -1,0 +1,35 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/polymerfire/firebase-app.html">
+
+<dom-module id="conexion-firebase-app">
+  <template>
+      <style>
+          :host {
+            display: block;
+          }
+      </style>
+ <!-- ELEMENTOS:   -->
+     <firebase-app
+        auth-domain="numispinwy.firebaseapp.com"
+        database-url="https://numispinwy.firebaseio.com"
+        api-key="AIzaSyDF8OgdHGgKdOZMYi_bmncjQ7-1B96Xrzo"
+        storage-bucket="numispinwy.appspot.com"
+        messaging-sender-id="27840589374">
+     </firebase-app>  
+  </template>
+
+  <script>
+    class ConexionFirebaseApp extends Polymer.Element {
+        static get is() { return 'conexion-firebase-app'; }
+        static get properties() {
+            return {
+            // prop1: {type: String,
+                     //value: 'conexion-firebase-app'}
+            }
+        };
+     // INICIO --> de las Funciones de las Properties 
+
+    }
+    window.customElements.define(ConexionFirebaseApp.is, ConexionFirebaseApp);
+  </script>
+</dom-module>

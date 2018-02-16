@@ -1,0 +1,32 @@
+{
+  "entrypoint": "index.html",
+  "shell": "src/layout-app.html",
+  "fragments": [
+    "src/menu-colecciones.html",
+    "src/menu-billetes.html",
+    "src/menu-monedas.html",
+    "src/error404-app.html"
+  ],
+  "sources": [
+    "src/**/*",
+    "images/**/*"
+  ],
+  "extraDependencies": [
+    "manifest.json",
+    "bower_components/webcomponentsjs/*.js"
+  ],
+  "lint": {
+    "rules": ["polymer-2"]
+  },
+  "builds": [
+    {
+      "preset": "es5-bundled"
+    },
+    {
+      "preset": "es6-bundled"
+    },
+    {
+      "preset": "es6-unbundled"
+    }
+  ]
+}

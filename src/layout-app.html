@@ -1,0 +1,155 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/app-layout/app-drawer/app-drawer.html">
+<link rel="import" href="../bower_components/app-layout/app-drawer-layout/app-drawer-layout.html">
+<link rel="import" href="../bower_components/app-layout/app-header/app-header.html">
+<link rel="import" href="../bower_components/app-layout/app-header-layout/app-header-layout.html">
+<link rel="import" href="../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
+<link rel="import" href="../bower_components/app-layout/app-toolbar/app-toolbar.html">
+<link rel="import" href="../bower_components/app-route/app-location.html">
+<link rel="import" href="../bower_components/app-route/app-route.html">
+<link rel="import" href="../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../bower_components/iron-selector/iron-selector.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="conexion-firebase-app.html">
+<link rel="import" href="login-firebase-app.html">
+<link rel="import" href="icons-app.html">
+
+<link rel="lazy-import" href="menu-colecciones.html">
+<link rel="lazy-import" href="menu-billetes.html">
+<link rel="lazy-import" href="menu-monedas.html">
+<link rel="lazy-import" href="menu-error404.html">
+
+<dom-module id="layout-app">
+    <template>
+        <style>
+            :host {
+                --app-primary-color: #4285f4;
+                --app-secondary-color: black;
+                display: block;
+            }
+                app-drawer-layout:not([narrow]) [drawer-toggle] {
+                    display: none;
+                }
+                app-drawer {
+                    --app-drawer-content-container: {
+                        background-color: #eee;
+                    }
+                }
+                app-header {
+                    color: #fff;
+                    background-color: var(--app-primary-color);
+                }
+                app-header paper-icon-button {
+                    --paper-icon-button-ink-color: white;
+                }
+                    .drawer-list {
+                        margin: 0 20px;
+                    }
+                        .drawer-list a {
+                            display: block;
+                            padding: 0 16px;
+                            text-decoration: none;
+                            color: var(--app-secondary-color);
+                            line-height: 40px;
+                        }
+                            .drawer-list a.iron-selected {
+                                color: black;
+                                font-weight: bold;
+                            }
+        </style>
+            <!-- INICIO: Elementos   -->
+            <conexion-firebase-app> <!-- Conexion a Base de datos FIREBASE -->
+            </conexion-firebase-app>  
+
+            <app-location route="{{route}}" url-space-regex="^[[rootPath]]"> <!-- Creo que enrutan las vistas del menu -->
+            </app-location>  
+
+            <app-route route="{{route}}" pattern="[[rootPath]]:page" data="{{routeData}}" tail="{{subroute}}">
+            </app-route>
+
+            <app-drawer-layout fullbleed narrow="{{narrow}}">  
+
+                <app-drawer id="drawer" slot="drawer" swipe-open="[[narrow]]"> <!-- Drawer content: Contenido del "Cajón" de Menus -->
+                    
+                    <app-toolbar>Menu</app-toolbar>
+
+                    <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
+                        <a name="colecciones" href="[[rootPath]]colecciones">Colecciones</a>
+                        <a name="billetes" href="[[rootPath]]billetes">Billetes</a>
+                        <a name="monedas" href="[[rootPath]]monedas">Monedas</a>
+                    </iron-selector>
+
+                </app-drawer>
+               
+                <app-header-layout has-scrolling-region>
+
+                    <app-header slot="header" condenses reveals effects="waterfall">
+
+                        <app-toolbar>
+                            <paper-icon-button icon="icons-app:menu" drawer-toggle></paper-icon-button>
+                            <div main-title>NumisPinwy Beta</div>
+                            <login-firebase-app></login-firebase-app> 
+                            <!-- <paper-icon-button icon="icons-app:account-circle" id="btn_login" on-tap="[[login]]"></paper-icon-button> -->
+                        </app-toolbar>
+                        
+                    </app-header>
+
+                    <iron-pages selected="[[page]]" attr-for-selected="name" fallback-selection="error404" role="main">
+                        <menu-colecciones name="colecciones"></menu-colecciones>
+                        <menu-billetes name="billetes"></menu-billetes>
+                        <menu-monedas name="monedas"></menu-monedas>
+                        <error404-app name="error404"></error404-app>
+                    </iron-pages>
+
+                </app-header-layout> <!-- Main content -->
+
+            </app-drawer-layout>
+            <!-- FIN: Elementos   -->
+    </template>
+
+    <script>
+      class LayoutApp extends Polymer.Element {
+        static get is() { return 'layout-app'; }
+        static get properties() {
+            return {
+                page: { type: String,
+                        reflectToAttribute: true,
+                        observer: '_pageChanged',
+                      },
+                routeData: {type: Object},
+                subroute: {type: String},
+                rootPath: {type: String},
+                login: {type: function(){}}
+            }
+        };
+        // INICIO --> de las Funciones de las Properties
+        static get observers() {
+            return [
+                '_routePageChanged(routeData.page)',
+            ];
+        }
+
+              _routePageChanged(page) {
+                  this.page = page || 'colecciones'; // If no page was found in the route data, page will be an empty string, Default to 'colecciones' in that case.
+                  if (!this.$.drawer.persistent) { // Close a non-persistent drawer when the page & route are changed.
+                      this.$.drawer.close();
+                  }
+              }
+                  
+                    _pageChanged(page) {  // Load page import on demand. Show 404 page if fails
+                        var resolvedPageUrl = this.resolveUrl('menu-' + page + '.html');
+                        Polymer.importHref( resolvedPageUrl,
+                                            null,
+                                            this._showPage404.bind(this),
+                                            true
+                                          );
+                    }
+
+                          _showPage404() { 
+                              this.page = 'error404';
+                          }
+       // FIN --> de las Funciones de las Properties 
+      }
+      window.customElements.define(LayoutApp.is, LayoutApp);
+    </script>
+</dom-module>

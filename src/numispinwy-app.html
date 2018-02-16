@@ -1,0 +1,41 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../src/conexion-firebase-app.html">
+<link rel="import" href="../src/login-firebase-app.html">
+<link rel="import" href="../src/layout-app.html">
+
+<dom-module id="numispinwy-app">
+    <template>
+        <style>
+            :host {
+              display: block;
+            }
+        </style>
+  <!-- ELEMENTOS:   --> 
+    <layout-app></layout-app>
+    <!-- <conexion-firebase-app></conexion-firebase-app>
+      <login-firebase-app></login-firebase-app> -->
+      <!-- <formulario-billetes-app></formulario-billetes-app>
+      <formulario-monedas-app></formulario-monedas-app>    -->
+    </template>
+
+    <script>
+        class NumispinwyApp extends Polymer.Element {
+          static get is() { return 'numispinwy-app'; }
+          static get properties() {
+              return {
+                  // objeto: {type: Object},
+                  // funcion: {type: function(){}},
+              }
+          };
+        // INICIO --> de las Funciones de las Properties 
+          // funcion() { this.$.auth.signInWithPopup()
+          //           .then(function(response) {console.log("logueado sin problemas")})
+          //           .catch(function(error) {console.log("error al loguearse")})
+          //         }
+          
+        // FIN --> de las Funciones de las Properties 
+          
+        }
+    window.customElements.define(NumispinwyApp.is, NumispinwyApp);
+  </script>
+</dom-module>

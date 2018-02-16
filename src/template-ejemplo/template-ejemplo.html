@@ -1,0 +1,33 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="template-ejemplo">
+    <template>
+        <style>
+            :host {
+              display: block;
+            }
+        </style>
+  <!-- ELEMENTOS:   -->   
+    </template>
+
+    <script>
+        class TemplateEjemplo extends Polymer.Element {
+          static get is() { return 'template-ejemplo'; }
+          static get properties() {
+              return {
+                  // objeto: {type: Object},
+                  // funcion: {type: function(){}},
+              }
+          };
+        // INICIO --> de las Funciones de las Properties 
+          // funcion() { this.$.auth.signInWithPopup()
+          //           .then(function(response) {console.log("logueado sin problemas")})
+          //           .catch(function(error) {console.log("error al loguearse")})
+          //         }
+          
+        // FIN --> de las Funciones de las Properties 
+          
+        }
+    window.customElements.define(TemplateEjemplo.is, TemplateEjemplo);
+  </script>
+</dom-module>
