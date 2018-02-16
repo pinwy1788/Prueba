@@ -1,0 +1,40 @@
+[debug] [2018-02-16T04:47:07.059Z] ----------------------------------------------------------------------
+[debug] [2018-02-16T04:47:07.074Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\pinwy\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
+[debug] [2018-02-16T04:47:07.074Z] CLI Version:   3.17.4
+[debug] [2018-02-16T04:47:07.074Z] Platform:      win32
+[debug] [2018-02-16T04:47:07.074Z] Node Version:  v9.4.0
+[debug] [2018-02-16T04:47:07.074Z] Time:          Fri Feb 16 2018 01:47:07 GMT-0300 (Hora verano Sudamérica Pacífico)
+[debug] [2018-02-16T04:47:07.074Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-02-16T04:47:07.137Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-02-16T04:47:07.137Z] > authorizing via signed-in user
+[debug] [2018-02-16T04:47:07.152Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-02-16T04:47:07.152Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ { refresh_token: '1/Vs9Ej0CuaLLRb6kkv7oxbfmm6JPqwrRMWzPx0cw_Ub4',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Fri Feb 16 2018 01:47:07 GMT-0300 (Hora verano Sudamérica Pacífico)
+[debug] [2018-02-16T04:47:07.795Z] <<< HTTP RESPONSE 200
+[debug] [2018-02-16T04:47:07.827Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/numispinwy  
+  
+ Fri Feb 16 2018 01:47:07 GMT-0300 (Hora verano Sudamérica Pacífico)
+[debug] [2018-02-16T04:47:09.200Z] <<< HTTP RESPONSE 200
+[debug] [2018-02-16T04:47:09.204Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/numispinwy/tokens  
+  
+ Fri Feb 16 2018 01:47:09 GMT-0300 (Hora verano Sudamérica Pacífico)
+[debug] [2018-02-16T04:47:10.184Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'D:\GitHub\NumisPinwy'...
+[info] 
+[debug] [2018-02-16T04:47:10.212Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/numispinwy  
+  
+ Fri Feb 16 2018 01:47:10 GMT-0300 (Hora verano Sudamérica Pacífico)
+[debug] [2018-02-16T04:47:11.404Z] <<< HTTP RESPONSE 200
+[debug] [2018-02-16T04:47:11.419Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/27840589374/clients/_:getWebAppConfig  
+  
+ Fri Feb 16 2018 01:47:11 GMT-0300 (Hora verano Sudamérica Pacífico)
+[debug] [2018-02-16T04:47:12.119Z] <<< HTTP RESPONSE 200
+[info] +  hosting: Local server: http://localhost:5000
+
