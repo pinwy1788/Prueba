@@ -12,7 +12,7 @@
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="conexion-firebase-app.html">
 <link rel="import" href="login-firebase-app.html">
-<link rel="import" href="icons-app.html">
+<link rel="import" href="iconos-app.html">
 
 
 <link rel="lazy-import" href="menu-colecciones.html">
@@ -20,7 +20,7 @@
 <link rel="lazy-import" href="menu-monedas.html">
 <link rel="lazy-import" href="menu-error404.html">
 
-<dom-module id="layout-app">
+<dom-module id="diseno-app">
     <template>
         <style>
             :host {
@@ -87,10 +87,10 @@
                     <app-header slot="header" condenses reveals effects="waterfall">
 
                         <app-toolbar>
-                            <paper-icon-button icon="icons-app:menu" drawer-toggle></paper-icon-button>
+                            <paper-icon-button icon="iconos-app:menu" drawer-toggle></paper-icon-button>
                             <div main-title>NumisPinwy Beta</div>
                             <login-firebase-app></login-firebase-app> 
-                            <!-- <paper-icon-button icon="icons-app:account-circle" id="btn_login" on-tap="[[login]]"></paper-icon-button> -->
+                            <!-- <paper-icon-button icon="iconos-app:account-circle" id="btn_login" on-tap="[[login]]"></paper-icon-button> -->
                         </app-toolbar>
                         
                     </app-header>
@@ -109,8 +109,8 @@
     </template>
 
     <script>
-      class LayoutApp extends Polymer.Element {
-        static get is() { return 'layout-app'; }
+      class DisenoApp extends Polymer.Element {
+        static get is() { return 'diseno-app'; }
         static get properties() {
             return {
                 page: { type: String,
@@ -151,6 +151,6 @@
                           }
        // FIN --> de las Funciones de las Properties 
       }
-      window.customElements.define(LayoutApp.is, LayoutApp);
+      window.customElements.define(DisenoApp.is, DisenoApp);
     </script>
 </dom-module>

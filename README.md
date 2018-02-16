@@ -47,8 +47,8 @@ Second, install [Bower](https://bower.io/) using [npm](https://www.npmjs.com)
 
 ##### Initialize project from template
 
-    mkdir layout-app
-    cd layout-app
+    mkdir diseno-app
+    cd diseno-app
     polymer init polymer-2-starter-kit
 
 ### Start the development server
